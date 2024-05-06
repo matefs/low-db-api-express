@@ -94,13 +94,27 @@ app.get("/usuarios", (_, res) => {
   return res.json(usuarios);
 });
 
-// GET usuarios
-app.post("/usuarios", (_, res) => {
-  const usuarioId = nanoid();
-  
+ 
+app.post("/usuarios", (req, res) => {
+  const usuario = req.body 
+
   const usuarios = db.get("usuarios").value();
-  return res.json(usuarios);
+  let maiorIdDeUsuario = 0; 
+  for (const user of usuarios) {
+    if (user.id > maiorIdDeUsuario) {  
+      maiorIdDeUsuario = user.id;
+    }
+  }
+    usuarioNovoId = maiorIdDeUsuario + 1
+    usuarios
+        .push({
+        ...usuario,
+        id: usuarioNovoId,
+      })
+    res.json({ success: true, usuarioNovoId});
 });
+
+
 
 console.log(nanoid())
 

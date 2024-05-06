@@ -48,3 +48,25 @@ ___
 `cd api`  
 `npm i`  
 `npm start`  
+
+
+### Usuarios post example:
+
+```
+
+curl -X POST \
+  http://localhost:3000/usuarios \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "nome": "Mateus Filipe Schverz",
+    "email": "matefs8569@gmail.com",
+    "dataNascimento": "2001-02-02",
+    "sexo": "masculino",
+    "cidade": "Concórdia",
+    "estado": "SC",
+    "senha": "123",
+    "confirmarSenha": "123",
+    "cpf": "112.553.389-70",
+}'
+
+```
